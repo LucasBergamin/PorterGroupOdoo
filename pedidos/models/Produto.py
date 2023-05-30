@@ -27,3 +27,8 @@ class Produto(models.Model):
     unit_price = fields.Monetary(
         string="Preço Unitário"
     )
+
+    pedido_id = fields.Many2one(
+        comodel_name='pedidos.pedido',
+        string="Pedido"
+    )

@@ -17,6 +17,11 @@
                     <field name="order_date"/>
                 </group>
             </group>
+            <notebook>
+              <page string="Produtos">
+                  <field name="produtos_ids"/>
+              </page>
+            </notebook>
           </sheet>
         </form>
       </field>

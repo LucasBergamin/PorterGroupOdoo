@@ -25,3 +25,9 @@ class Pedido(models.Model):
         default="aberto",
         string="Status do Pedido"
     )
+
+    produtos_ids = fields.One2many(
+        comodel_name="pedidos.produto",
+        inverse_name="pedido_id",
+        string="Produtos"
+    )
