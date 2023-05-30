@@ -1,0 +1,49 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="pedidos_form_estoque">
+      <field name="name">Estoques form</field>
+      <field name="model">pedidos.estoque</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <group>
+                    <field name="name"/>
+                    <field name="unit_price"/>
+                </group>
+                <group>
+                    <field name="quanty_available"/>
+                    <field name="description"/>
+                </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pedidos_tree_estoque">
+      <field name="name">estoque tree</field>
+      <field name="model">pedidos.estoque</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="unit_price"/>
+            <field name="quanty_available"/>
+            <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="pedidos_estoque_action">
+      <field name="name">estoque</field>
+      <field name="res_model">pedidos.estoque</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Estoque" id="estoque_menu" parent="estoque_menu_main" sequence="1"
+              action="pedidos_estoque_action"/>
+
+  </data>
+</odoo>

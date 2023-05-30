@@ -2,3 +2,4 @@
 
 from . import Pedido
 from . import Produto
+from . import Estoque

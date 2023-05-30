@@ -31,5 +31,6 @@
         #Views
         'views/pedido_view.xml',
         'views/produto_view.xml',
+        'views/estoque_view.xml',
     ],
 }

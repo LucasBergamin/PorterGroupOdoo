@@ -3,17 +3,15 @@
 from odoo import models, fields, api
 
 
-class Produto(models.Model):
-    _name = 'pedidos.produto'
-    _description = 'Produto'
+class Estoque(models.Model):
+    _name = 'pedidos.estoque'
+    _description = 'Pedido'
 
-    product_name = fields.Many2one(
-        comodel_name="pedidos.estoque",
+    name = fields.Char(
         string="Nome do produto"
     )
 
     description = fields.Text(
-        related="product_name.description",
         string="Descrição"
     )
 
@@ -27,17 +25,9 @@ class Produto(models.Model):
                                  self: self.env.user.company_id.currency_id.id)
 
     unit_price = fields.Monetary(
-        related="product_name.unit_price",
         string="Preço Unitário"
     )
 
     quanty_available = fields.Integer(
-        related="product_name.quanty_available",
         string="Quantidade Disponivel"
-    )
-
-    pedido_id = fields.Many2one(
-        comodel_name='pedidos.pedido',
-        string="Pedido",
-        readonly=True
     )

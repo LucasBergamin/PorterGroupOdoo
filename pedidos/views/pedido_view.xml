@@ -7,6 +7,10 @@
         <form>
           <header>
               <field name="order_status" widget="statusbar"/>
+              <button name="aberto" string="Abrir" type="object"/>
+              <button name="processo" string="Processar" type="object"/>
+              <button name="concluido" string="Concluir" type="object"/>
+              <button name="cancelado" string="Cancelar" type="object" confirm="Realmente deseja cancelar seu pedido?"/>
           </header>
           <sheet>
             <div class="oe_title">
@@ -15,15 +19,15 @@
             </div>
             <group>
                 <group>
-                    <field name="client_name"/>
+                    <field name="client_name" attrs="{'readonly': [('order_status', '!=', 'aberto')]}"/>
                 </group>
                 <group>
-                    <field name="order_date"/>
+                    <field name="order_date" attrs="{'readonly': [('order_status', '!=', 'aberto')]}"/>
                 </group>
             </group>
             <notebook>
               <page string="Produtos">
-                  <field name="produtos_ids"/>
+                  <field name="produtos_ids" attrs="{'readonly': [('order_status', '!=', 'aberto')]}"/>
               </page>
             </notebook>
           </sheet>
