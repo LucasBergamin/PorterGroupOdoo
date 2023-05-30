@@ -1,0 +1,49 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="pedidos_form_pedido">
+      <field name="name">Pedidos form</field>
+      <field name="model">pedidos.pedido</field>
+      <field name="arch" type="xml">
+        <form>
+        <header>
+            <field name="order_status" widget="statusbar"/>
+        </header>
+          <sheet>
+            <group>
+                <group>
+                    <field name="client_name"/>
+                </group>
+                <group>
+                    <field name="order_date"/>
+                </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pedidos_tree_pedido">
+      <field name="name">Pedidos tree</field>
+      <field name="model">pedidos.pedido</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="client_name"/>
+            <field name="order_date"/>
+            <field name="order_status"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="pedidos_pedido_action">
+      <field name="name">Pedidos</field>
+      <field name="res_model">pedidos.pedido</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Pedidos" id="pedidos_menu" parent="gerenciamento_pedidos_menu" sequence="1"
+              action="pedidos_pedido_action"/>
+
+  </data>
+</odoo>

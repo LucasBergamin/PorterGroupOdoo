@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+    
+    <!-- Top menu item -->
+
+    <menuitem name="Pedidos" id="pedidos_menu_main" sequence="1"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Gerenciamento" id="gerenciamento_pedidos_menu" parent="pedidos_menu_main" sequence="1"/>
+
+  </data>
+</odoo>
