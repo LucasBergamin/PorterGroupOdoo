@@ -30,5 +30,6 @@
         'views/menu.xml',
         #Views
         'views/pedido_view.xml',
+        'views/produto_view.xml',
     ],
 }

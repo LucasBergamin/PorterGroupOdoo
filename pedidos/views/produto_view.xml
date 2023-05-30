@@ -1,0 +1,47 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="pedidos_form_produto">
+      <field name="name">Produtos form</field>
+      <field name="model">pedidos.produto</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <group>
+                    <field name="product_name"/>
+                    <field name="unit_price"/>
+                </group>
+                <group>
+                    <field name="description"/>
+                </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="pedidos_tree_produto">
+      <field name="name">Produto tree</field>
+      <field name="model">pedidos.produto</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="product_name"/>
+            <field name="unit_price"/>
+            <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="pedidos_produto_action">
+      <field name="name">Produto</field>
+      <field name="res_model">pedidos.produto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Produtos" id="produto_menu" parent="gerenciamento_pedidos_menu" sequence="1"
+              action="pedidos_produto_action"/>
+
+  </data>
+</odoo>
