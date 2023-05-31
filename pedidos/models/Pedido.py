@@ -44,21 +44,36 @@ class Pedido(models.Model):
         values['name'] = self.env['ir.sequence'].next_by_code('seq.pedido')
         return super(Pedido, self).create(values)
     
-    def aberto(self):
-        self.order_status = 'aberto'
+    def abrir_pedido(self):
+        for record in self:
+            if record.order_status == 'concluido' or record.order_status == 'cancelado':
+                raise ValidationError('Um pedido já concluido ou cancelado não pode ser aberto novamente')
+            record.order_status = 'aberto'
 
-    def processo(self):
-        if not self.produtos_ids:
-            raise ValidationError('Para processar o pedido, precisa de um produto')
-        
-        for produto in self.produtos_ids:
-            if produto.quanty_available == 0:
-                raise ValidationError(f'Produto {produto.product_name.name} está sem estoque')
-        
-        self.order_status = 'processo'
+    def processar_pedido(self):
+        for record in self:
+            if record.order_status != 'aberto':
+                raise ValidationError('Um pedido apenas pode ser processado se estiver aberto')
 
-    def concluido(self):
-        self.order_status = 'concluido'
+            if not record.produtos_ids:
+                raise ValidationError('Para processar o pedido, precisa de um produto')
+            
+            for produto in record.produtos_ids:
+                if produto.quanty_available == 0:
+                    raise ValidationError(f'Produto {produto.product_name.name} está sem estoque')
+            
+            record.order_status = 'processo'
+
+    def concluir_pedido(self):
+        for record in self:
+            if record.order_status != 'processo':
+                raise ValidationError('Um pedido apenas pode ser concluido após ser processado')
+            
+            for produto in record.produtos_ids:
+                product_estoque = self.env['pedidos.estoque'].browse(produto.product_name.id)
+                product_estoque.write({'quanty_available':product_estoque.quanty_available - 1})
+            record.order_status = 'concluido'
     
-    def cancelado(self):
-        self.order_status = 'cancelado'
+    def cancelar_pedido(self):
+        for record in self:
+            record.order_status = 'cancelado'

@@ -28,6 +28,8 @@
         'security/ir.model.access.csv',
         #Menu
         'views/menu.xml',
+        #Data
+        'data/ir_action_server.xml',
         #Views
         'views/pedido_view.xml',
         'views/produto_view.xml',

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="abrir_pedidos" model="ir.actions.server">
+        <field name="name">Abrir Pedidos</field>
+        <field name="model_id" ref="pedidos.model_pedidos_pedido"/>
+        <field name="binding_model_id" ref="pedidos.model_pedidos_pedido"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.abrir_pedido()
+        </field>
+    </record>
+
+    <record id="processar_pedidos" model="ir.actions.server">
+        <field name="name">Processar Pedidos</field>
+        <field name="model_id" ref="pedidos.model_pedidos_pedido"/>
+        <field name="binding_model_id" ref="pedidos.model_pedidos_pedido"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.processar_pedido()
+        </field>
+    </record>
+
+    <record id="concluir_pedidos" model="ir.actions.server">
+        <field name="name">Concluir Pedidos</field>
+        <field name="model_id" ref="pedidos.model_pedidos_pedido"/>
+        <field name="binding_model_id" ref="pedidos.model_pedidos_pedido"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.concluir_pedido()
+        </field>
+    </record>
+
+    <record id="cancelar_pedidos" model="ir.actions.server">
+        <field name="name">Cancelar Pedidos</field>
+        <field name="model_id" ref="pedidos.model_pedidos_pedido"/>
+        <field name="binding_model_id" ref="pedidos.model_pedidos_pedido"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.cancelar_pedido()
+        </field>
+    </record>
+</odoo>

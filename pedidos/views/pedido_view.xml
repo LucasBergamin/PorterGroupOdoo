@@ -7,10 +7,11 @@
         <form>
           <header>
               <field name="order_status" widget="statusbar"/>
-              <button name="aberto" string="Abrir" type="object"/>
-              <button name="processo" string="Processar" type="object"/>
-              <button name="concluido" string="Concluir" type="object"/>
-              <button name="cancelado" string="Cancelar" type="object" confirm="Realmente deseja cancelar seu pedido?"/>
+
+              <button name="abrir_pedido" string="Abrir Pedido" type="object"/>
+              <button name="processar_pedido" string="Processar Pedido" type="object" />
+              <button name="concluir_pedido" string="Concluir Pedido" type="object" />
+              <button name="cancelar_pedido" string="Cancelar Pedido" type="object" confirm="Realmente deseja cancelar seu pedido?"/>
           </header>
           <sheet>
             <div class="oe_title">
@@ -53,6 +54,18 @@
         <field name="code">seq.pedido</field>
         <field name="prefix">PED</field>
         <field name="padding">3</field>
+    </record>
+
+    <record id="pedido_search" model="ir.ui.view">
+      <field name="model">pedidos.pedido</field>
+      <field name="arch" type="xml">
+        <search string="filter">
+          <field name="client_name" string="Nome do cliente"/>
+          <field name="name" string="Número do pedido"/>
+
+          <filter string="Nome do Cliente" name="client_name" context="{'group_by':'client_name'}"/>
+        </search>
+      </field>
     </record>
 
     <record model="ir.actions.act_window" id="pedidos_pedido_action">

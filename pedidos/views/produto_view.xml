@@ -14,7 +14,6 @@
                 <group>
                     <field name="description"/>
                     <field name="quanty_available"/>
-                    <field name="pedido_id"/>
                 </group>
             </group>
           </sheet>
@@ -31,7 +30,6 @@
             <field name="unit_price"/>
             <field name="description"/>
             <field name="quanty_available"/>
-            <field name="pedido_id"/>
         </tree>
       </field>
     </record>
@@ -44,8 +42,8 @@
     </record>
 
 
-    <menuitem name="Produtos" id="produto_menu" parent="gerenciamento_pedidos_menu" sequence="1"
-              action="pedidos_produto_action"/>
+    <!-- <menuitem name="Produtos" id="produto_menu" parent="gerenciamento_pedidos_menu" sequence="1"
+              action="pedidos_produto_action"/> -->
 
   </data>
 </odoo>
